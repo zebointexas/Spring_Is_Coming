@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Date;
+
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
 
@@ -28,6 +30,9 @@ public class DemoApplication implements CommandLineRunner {
 			System.out.println("No data found but we will add some now");
 			userRepository.save(new User("Zebo", "Xiong - Test data"));
 			userRepository.save(new User("Liwen", "Zhu - Test data"));
+		} else {
+			Date now = new Date();
+			userRepository.save(new User("Save time: ", now.toString()));
 		}
 
 		for(User u : userRepository.findAll()){
